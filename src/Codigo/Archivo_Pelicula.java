@@ -38,18 +38,47 @@ public class Archivo_Pelicula {
 			System.out.println("fin adiciona");
 		}
 	}
-	public void Listar() throws ClassNotFoundException, IOException {
+	public Pelicula[] Listar() throws ClassNotFoundException, IOException {
 		ObjectInputStream aPe = null;
+		Pelicula p[]=new Pelicula[N()];
+		System.out.println("------**   "+p.length);
 		try {
-			aPe = new ObjectInputStream(new FileInputStream(na));
+			aPe = new ObjectInputStream(new FileInputStream(na));						
+			int i=0;
+			while(true) {
+				pe = new Pelicula();
+				pe = (Pelicula)aPe.readObject();				
+				p[i]=pe;
+				i++;
+			}			
+		}
+		catch(Exception e) {
+			System.out.println("fin listado2");
+			
+		}
+		finally {
+			return p;
+		}
+	}
+	public int N() throws ClassNotFoundException, IOException {
+		ObjectInputStream aPe = null;
+		int i=0;
+		try {
+			aPe = new ObjectInputStream(new FileInputStream(na));						
 			while(true) {
 				pe = new Pelicula();
 				pe = (Pelicula)aPe.readObject();
-				pe.mostrar();
+				i++;				
 			}
 		}
 		catch(Exception e) {
-			System.out.println("fin listado");
+			System.out.println(e);
+			System.out.println("fin listado1");
+			
 		}
+		finally{
+			return i;
+		}
+		
 	}
 }
