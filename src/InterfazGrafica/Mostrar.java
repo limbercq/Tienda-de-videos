@@ -115,7 +115,9 @@ public class Mostrar extends JFrame {
 					Pelicula p[]= new Pelicula[a.Listar().length];
 					p=a.Listar();
 					System.out.println("Tamaño   "+p.length);
+					// resetea las filas
 					((DefaultTableModel)table.getModel()).setNumRows(0);
+					
 					for (int i=0;i<p.length;i++) {
 						p[i].mostrar();
 						int nroCols = table.getModel().getColumnCount();						
