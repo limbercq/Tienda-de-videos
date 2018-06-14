@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Codigo.Archivo_Pelicula;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -15,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
@@ -27,11 +31,12 @@ public class Formulario extends JFrame {
 	private JTextField textPrecio;
 	private JTextField textFecha;
 	private JTextField textNro;
+	private JTextField textCodigo;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args)throws ClassNotFoundException, IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -93,7 +98,7 @@ public class Formulario extends JFrame {
 		JLabel lblFechaDeEstreno = new JLabel("Fecha de estreno");
 		lblFechaDeEstreno.setForeground(Color.WHITE);
 		lblFechaDeEstreno.setFont(new Font("Vivaldi", Font.BOLD, 25));
-		lblFechaDeEstreno.setBounds(444, 79, 150, 19);
+		lblFechaDeEstreno.setBounds(444, 134, 162, 19);
 		contentPane.add(lblFechaDeEstreno);
 		
 		JLabel lblIdioma = new JLabel("Idioma");
@@ -105,13 +110,13 @@ public class Formulario extends JFrame {
 		JLabel lblTipo = new JLabel("Tipo");
 		lblTipo.setForeground(Color.WHITE);
 		lblTipo.setFont(new Font("Vivaldi", Font.BOLD, 25));
-		lblTipo.setBounds(452, 194, 81, 19);
+		lblTipo.setBounds(444, 252, 81, 19);
 		contentPane.add(lblTipo);
 		
 		JLabel lblNroDeCopias = new JLabel("Nro de Copias");
 		lblNroDeCopias.setForeground(Color.WHITE);
 		lblNroDeCopias.setFont(new Font("Vivaldi", Font.BOLD, 25));
-		lblNroDeCopias.setBounds(444, 134, 150, 19);
+		lblNroDeCopias.setBounds(444, 194, 150, 19);
 		contentPane.add(lblNroDeCopias);
 		
 		textDuracion = new JTextField();
@@ -140,21 +145,28 @@ public class Formulario extends JFrame {
 		textFecha.setForeground(Color.WHITE);
 		textFecha.setOpaque(false);
 		textFecha.setColumns(10);
-		textFecha.setBounds(604, 79, 187, 27);
+		textFecha.setBounds(629, 134, 162, 27);
 		contentPane.add(textFecha);
 		
 		textNro = new JTextField();
 		textNro.setForeground(Color.WHITE);
 		textNro.setOpaque(false);
 		textNro.setColumns(10);
-		textNro.setBounds(604, 134, 116, 27);
+		textNro.setBounds(629, 194, 116, 27);
 		contentPane.add(textNro);
+		
+		textCodigo = new JTextField();
+		textCodigo.setOpaque(false);
+		textCodigo.setForeground(Color.WHITE);
+		textCodigo.setColumns(10);
+		textCodigo.setBounds(629, 82, 162, 27);
+		contentPane.add(textCodigo);
 		
 		JComboBox comboTipo = new JComboBox();
 		comboTipo.setOpaque(false);
 		comboTipo.setForeground(Color.BLACK);
 		comboTipo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		comboTipo.setBounds(622, 188, 169, 34);
+		comboTipo.setBounds(622, 237, 169, 34);
 		contentPane.add(comboTipo);
 		comboTipo.addItem(" Seleccione");
 		comboTipo.addItem(" Infantiles");
@@ -189,12 +201,22 @@ public class Formulario extends JFrame {
 		
 		JButton btnGuardar = new JButton("  Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
-			String vect[]=new String[6];
-			int v[]=new int[6];
+			String vect[]=new String[7];			
 			public void actionPerformed(ActionEvent e) {
 				if(!Comprobacion()) {					
 					if(validar()) {
-						System.out.println("entro");
+//					Archivo
+						Archivo_Pelicula a =new Archivo_Pelicula("Pelicula.dat");
+												
+						try {
+							a.Adicionar(vect, comboTipo.getSelectedIndex());
+							JOptionPane.showMessageDialog(null, "Se guardo correctamente", "\tExito", 3);
+							a.Listar();
+						} catch (ClassNotFoundException | IOException e2) {
+							
+							System.out.println("mal arch Pel");
+						}						
+						
 					}else 
 						JOptionPane.showMessageDialog(null, "Los campos Duracion, Precio, Nro de Copias Tienen que ser numeros", "\tError", 0);
 					
@@ -203,11 +225,10 @@ public class Formulario extends JFrame {
 				
 				
 				//
-			}
-			
+			}			
 			private boolean validar() {
 				boolean sw=true;
-				for(int i=3;i<6;i++) {				
+				for(int i=4;i<7;i++) {				
 					if(isNumericInt(vect[i])==false | isNumericDoub(vect[i])==false) 
 						sw=false;						
 				}
@@ -217,12 +238,13 @@ public class Formulario extends JFrame {
 			private boolean Comprobacion() {				
 				vect[0]=textNombre.getText();
 				vect[1]=textIdioma.getText();
-				vect[2]=textFecha.getText();				
-				vect[3]=textPrecio.getText();
-				vect[4]=textDuracion.getText();
-				vect[5]=textNro.getText();
+				vect[2]=textFecha.getText();
+				vect[3]=textCodigo.getText();
+				vect[4]=textPrecio.getText();				
+				vect[5]=textDuracion.getText();
+				vect[6]=textNro.getText();
 				boolean sw=false;
-				for(int i=0;i<6;i++) {
+				for(int i=0;i<7;i++) {
 					if(vect[i].equals(""))
 						sw=true;
 				}
@@ -269,6 +291,7 @@ public class Formulario extends JFrame {
 				textPrecio.setText("");
 				textIdioma.setText("");
 				textNro.setText("");
+				textCodigo.setText("");
 				comboTipo.setSelectedIndex(0);
 			}
 		});
@@ -289,6 +312,12 @@ public class Formulario extends JFrame {
 		lblBs.setFont(new Font("Vivaldi", Font.BOLD, 25));
 		lblBs.setBounds(351, 260, 66, 19);
 		contentPane.add(lblBs);
+		
+		JLabel lblCodigo = new JLabel("Codigo");
+		lblCodigo.setForeground(Color.WHITE);
+		lblCodigo.setFont(new Font("Vivaldi", Font.BOLD, 25));
+		lblCodigo.setBounds(433, 85, 162, 19);
+		contentPane.add(lblCodigo);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setForeground(Color.BLACK);
