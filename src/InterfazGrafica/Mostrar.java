@@ -23,15 +23,22 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Mostrar extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-
+	
 	/**
 	 * Launch the application.
 	 */
+	private  void inic() {
+		Inicio i=new Inicio();
+		i.setVisible(true);
+		this.dispose();
+	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -49,10 +56,13 @@ public class Mostrar extends JFrame {
 	 * Create the frame.
 	 */
 	public Mostrar() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 833, 520);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.setLocationRelativeTo(null);
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -95,6 +105,12 @@ public class Mostrar extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnInicio = new JButton("  Inicio");
+		btnInicio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				 inic();
+			}
+		});		
 		btnInicio.setOpaque(false);
 		btnInicio.setContentAreaFilled(false);
 		btnInicio.setIcon(new ImageIcon(Mostrar.class.getResource("/img/Principal.png")));

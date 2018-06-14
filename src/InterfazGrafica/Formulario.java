@@ -21,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Formulario extends JFrame {
 
@@ -32,7 +34,15 @@ public class Formulario extends JFrame {
 	private JTextField textFecha;
 	private JTextField textNro;
 	private JTextField textCodigo;
-
+	JButton btnInicio = new JButton("  Inicio");
+	JButton btnAtras = new JButton("  Atras");
+	private void mouseClicked1(MouseEvent e) {
+		Inicio i=new Inicio();
+		i.setVisible(true);
+		this.setVisible(false);
+	}
+			
+	
 	/**
 	 * Launch the application.
 	 */
@@ -174,22 +184,32 @@ public class Formulario extends JFrame {
 		comboTipo.addItem(" Accion");
 		comboTipo.addItem(" Terror");
 		comboTipo.addItem(" Romance");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mouseClicked1(e);
+			}
+		});
 		
-		JButton btnAtras = new JButton("  Atras");
+		
 		btnAtras.setFont(new Font("Bookman Old Style", Font.PLAIN, 17));
 		btnAtras.setForeground(Color.WHITE);
 		btnAtras.setContentAreaFilled(false);
 		btnAtras.setBorderPainted(false);
-		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnAtras.setIcon(new ImageIcon(Formulario.class.getResource("/img/atras.png")));
 		btnAtras.setOpaque(false);
 		btnAtras.setBounds(49, 317, 156, 80);
 		contentPane.add(btnAtras);
+		btnInicio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mouseClicked1(e);
+			}
+		});
 		
-		JButton btnInicio = new JButton("  Inicio");
+		
+		
 		btnInicio.setForeground(Color.WHITE);
 		btnInicio.setFont(new Font("Book Antiqua", Font.PLAIN, 17));
 		btnInicio.setIcon(new ImageIcon(Formulario.class.getResource("/img/Principal.png")));
