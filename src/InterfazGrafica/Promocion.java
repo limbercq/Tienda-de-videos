@@ -67,13 +67,14 @@ public class Promocion extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblPromociones = new JLabel("Promociones");
-		lblPromociones.setBounds(315, 5, 231, 49);
-		lblPromociones.setFont(new Font("Vivaldi", Font.PLAIN, 40));
+		JLabel lblPromociones = new JLabel("Promociones de Todo el a\u00F1o");
+		lblPromociones.setBounds(221, 11, 485, 49);
+		lblPromociones.setFont(new Font("Vivaldi", Font.BOLD, 40));
 		contentPane.add(lblPromociones);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 155, 832, 326);
+		scrollPane.setVisible(false);
+		scrollPane.setBounds(10, 143, 832, 338);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -102,7 +103,7 @@ public class Promocion extends JFrame {
 
 			
 		});
-		btnInicio.setBounds(76, 59, 135, 57);
+		btnInicio.setBounds(76, 59, 166, 57);
 		btnInicio.setFont(new Font("Sylfaen", Font.PLAIN, 20));
 		btnInicio.setContentAreaFilled(false);
 		btnInicio.setOpaque(false);
@@ -141,13 +142,13 @@ public class Promocion extends JFrame {
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				scrollPane.setVisible(true);
 				((DefaultTableModel)table.getModel()).setNumRows(0);
 				Archivo_Promo a=new Archivo_Promo("Promociones.dat");				
 				try {
 					Promociones prom =new Promociones();
 					prom = a.Listar();
-					Pelicula p[];
-					System.out.println(prom.getProm12().length);
+					Pelicula p[];					
 					p=prom.getProm1();
 					mes(1);
 					for (int i=0;i<p.length;i++) {					
@@ -411,7 +412,7 @@ public class Promocion extends JFrame {
 				case 1: return ("  Infantiles");
 				case 2: return ("  Navideños");
 				case 3: return ("  Accion");
-				case 4: return ("  Terror");
+				case 4: return ("  XXX");
 				case 5: return ("  Terror");
 				case 6: return ("  Romance");
 				}
@@ -425,9 +426,10 @@ public class Promocion extends JFrame {
 		btnMostrar.setContentAreaFilled(false);
 		contentPane.add(btnMostrar);
 		
-		JLabel lblTodasLasPromociones = new JLabel("Todas las promociones del a\u00F1o");
-		lblTodasLasPromociones.setBounds(325, 109, 184, 33);
-		contentPane.add(lblTodasLasPromociones);
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(Promocion.class.getResource("/img/fondo.jpg")));
+		lblFondo.setBounds(0, 0, 852, 492);
+		contentPane.add(lblFondo);
 		
 		
 	}

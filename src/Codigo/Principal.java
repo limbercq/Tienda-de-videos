@@ -9,7 +9,7 @@ public class Principal {
 		Archivo_Pelicula a =new Archivo_Pelicula("Pelicula.dat");
 		//a.Crear();
 		String f[]=new String[7];
-		leer(f);
+		//leer(f);
 		/*f[0]="s";
 		a.Adicionar(f, 4);*/
 		//a.Listar();

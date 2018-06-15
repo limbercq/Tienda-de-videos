@@ -30,12 +30,11 @@ public class Archivo_Pelicula {
 			pe=new Pelicula();
 			pe.leer(vect,i);
 			aPe.writeObject(pe);
-			System.out.println("se guardo correct");
+			System.out.println("se guardo correct Peli");
 			aPe.close();
 		}
-		catch(Exception e) {
-			System.out.println(e);
-			System.out.println("fin adiciona");
+		catch(Exception e) {			
+			System.out.println("fin adiciona Peli");
 		}
 	}
 	public Pelicula[] Listar() throws ClassNotFoundException, IOException {

@@ -30,7 +30,7 @@ public class Archivo_Promo {
 			pro=new Promociones();
 			pro.leer(vect);
 			aPe.writeObject(pro);
-			System.out.println("*se guardo correct ");
+			System.out.println("*se guardo correct Promo ");
 			aPe.close();
 		}
 		catch(Exception e) {			
@@ -47,7 +47,7 @@ public class Archivo_Promo {
 				pro = (Promociones)aPe.readObject();
 				p=pro;												
 			}			
-		}
+		} 
 		catch(Exception e) {
 			System.out.println("fin listadoPromo");
 			
@@ -55,26 +55,5 @@ public class Archivo_Promo {
 		finally {
 			return p;
 		}
-	}
-	public int N() throws ClassNotFoundException, IOException {
-		ObjectInputStream aPe = null;
-		int i=0;
-		try {
-			aPe = new ObjectInputStream(new FileInputStream(na));						
-			while(true) {
-				pro = new Promociones();
-				pro = (Promociones)aPe.readObject();
-				i++;
-				System.out.println("<<<<<<<<<<<<<<<<<<"+i);
-			}
-		}
-		catch(Exception e) {			
-			System.out.println("fin listadoN");
-			
-		}
-		finally{
-			return i;
-		}
-		
-	}
+	}	
 }

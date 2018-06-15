@@ -193,6 +193,7 @@ public class Formulario extends JFrame {
 		comboTipo.addItem(" Infantiles");
 		comboTipo.addItem("	Navideños");
 		comboTipo.addItem(" Accion");
+		comboTipo.addItem(" XXX");
 		comboTipo.addItem(" Terror");
 		comboTipo.addItem(" Romance");
 		btnAtras.addMouseListener(new MouseAdapter() {
