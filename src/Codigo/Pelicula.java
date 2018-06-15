@@ -1,14 +1,14 @@
 package Codigo;
 
 public class Pelicula implements java.io.Serializable {
-	protected String cod;
-	protected String nombre;
-	protected String duracion;
-	protected String idioma;
-	protected String fechaEstr;
-	protected int tipo;
-	protected String precio;
-	protected String nroCop;
+	private String cod;
+	private String nombre;
+	private String duracion;
+	private String idioma;
+	private String fechaEstr;
+	private int tipo;
+	private String precio;
+	private String nroCop;
 	
 	
 	public String getCod() {

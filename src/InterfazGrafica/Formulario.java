@@ -36,12 +36,23 @@ public class Formulario extends JFrame {
 	private JTextField textCodigo;
 	JButton btnInicio = new JButton("  Inicio");
 	JButton btnAtras = new JButton("  Atras");
+	JComboBox comboTipo = new JComboBox();
 	private void mouseClicked1(MouseEvent e) {
 		Inicio i=new Inicio();
 		i.setVisible(true);
 		this.setVisible(false);
 	}
-			
+	private void Limpiar() {
+		textFecha.setText("");
+		textNombre.setText("");
+		textDuracion.setText("");
+		textPrecio.setText("");
+		textIdioma.setText("");
+		textNro.setText("");
+		textCodigo.setText("");
+		comboTipo.setSelectedIndex(0);
+		
+	}		
 	
 	/**
 	 * Launch the application.
@@ -172,7 +183,7 @@ public class Formulario extends JFrame {
 		textCodigo.setBounds(629, 82, 162, 27);
 		contentPane.add(textCodigo);
 		
-		JComboBox comboTipo = new JComboBox();
+		
 		comboTipo.setOpaque(false);
 		comboTipo.setForeground(Color.BLACK);
 		comboTipo.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -232,6 +243,7 @@ public class Formulario extends JFrame {
 							a.Adicionar(vect, comboTipo.getSelectedIndex());
 							JOptionPane.showMessageDialog(null, "Se guardo correctamente", "\tExito", 3);
 							a.Listar();
+							Limpiar();
 						} catch (ClassNotFoundException | IOException e2) {
 							
 							System.out.println("mal arch Pel");
@@ -305,15 +317,10 @@ public class Formulario extends JFrame {
 		btnLimpiar.setIcon(new ImageIcon(Formulario.class.getResource("/img/limpiar.png")));
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textFecha.setText("");
-				textNombre.setText("");
-				textDuracion.setText("");
-				textPrecio.setText("");
-				textIdioma.setText("");
-				textNro.setText("");
-				textCodigo.setText("");
-				comboTipo.setSelectedIndex(0);
+				Limpiar();
 			}
+
+			
 		});
 		btnLimpiar.setOpaque(false);
 		btnLimpiar.setContentAreaFilled(false);

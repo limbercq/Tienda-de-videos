@@ -35,11 +35,12 @@ public class Inicio extends JFrame {
 		m.setVisible(true);
 		this.setVisible(false);
 	}
-	private void mouseClicked2(MouseEvent e) {
-		Mostrar m=new Mostrar();
-		m.setVisible(true);
+	private void promo() {
+		Promocion p=new Promocion();
+		p.setVisible(true);
 		this.setVisible(false);
 	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -74,6 +75,13 @@ public class Inicio extends JFrame {
 		contentPane.add(lblTiendaDeVido);
 		
 		JButton btnPromociones = new JButton("Promociones");
+		btnPromociones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				promo();
+			}
+
+			
+		});
 		btnPromociones.setForeground(Color.WHITE);
 		btnPromociones.setFont(new Font("Sylfaen", Font.PLAIN, 20));
 		btnPromociones.setOpaque(false);
@@ -104,6 +112,7 @@ public class Inicio extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				mostrar();
 			}
+			
 		});
 		btnMostrar.setForeground(Color.WHITE);
 		btnMostrar.setFont(new Font("Sylfaen", Font.BOLD, 20));

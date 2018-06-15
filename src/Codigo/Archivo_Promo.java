@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Archivo_Pelicula {
+public class Archivo_Promo {
 	public String na;
-	private Pelicula pe;
-	public Archivo_Pelicula(String na) {
+	private Promociones pro;
+	public Archivo_Promo(String na) {
 		super();
 		this.na = na;
 	}
@@ -18,8 +18,8 @@ public class Archivo_Pelicula {
 		ObjectOutputStream aPe = new ObjectOutputStream(new FileOutputStream(na));
 		aPe.close();
 	}	
-	public void Adicionar(String[] vect, int i) throws ClassNotFoundException, IOException{
-		String op;
+	public void Adicionar(Pelicula[] vect) throws ClassNotFoundException, IOException{
+		Crear();	
 		ObjectOutputStream aPe =null;
 		try {
 			if(new File(na).exists()) {
@@ -27,32 +27,29 @@ public class Archivo_Pelicula {
 			}else{
 				aPe = new AddObjectOutputStream(new FileOutputStream(na,true));
 			}
-			pe=new Pelicula();
-			pe.leer(vect,i);
-			aPe.writeObject(pe);
-			System.out.println("se guardo correct");
+			pro=new Promociones();
+			pro.leer(vect);
+			aPe.writeObject(pro);
+			System.out.println("*se guardo correct ");
 			aPe.close();
 		}
-		catch(Exception e) {
-			System.out.println(e);
-			System.out.println("fin adiciona");
+		catch(Exception e) {			
+			System.out.println("fin adiciona Promo");
 		}
 	}
-	public Pelicula[] Listar() throws ClassNotFoundException, IOException {
+	public Promociones  Listar() throws ClassNotFoundException, IOException {
 		ObjectInputStream aPe = null;
-		Pelicula p[]=new Pelicula[N()];		
+		Promociones p=new Promociones();		
 		try {
-			aPe = new ObjectInputStream(new FileInputStream(na));						
-			int i=0;
-			while(true) {
-				pe = new Pelicula();
-				pe = (Pelicula)aPe.readObject();				
-				p[i]=pe;
-				i++;
+			aPe = new ObjectInputStream(new FileInputStream(na));
+			while(true) {				
+				pro = new Promociones();
+				pro = (Promociones)aPe.readObject();
+				p=pro;												
 			}			
 		}
 		catch(Exception e) {
-			System.out.println("fin listado Pelic");
+			System.out.println("fin listadoPromo");
 			
 		}
 		finally {
@@ -65,13 +62,14 @@ public class Archivo_Pelicula {
 		try {
 			aPe = new ObjectInputStream(new FileInputStream(na));						
 			while(true) {
-				pe = new Pelicula();
-				pe = (Pelicula)aPe.readObject();
-				i++;				
+				pro = new Promociones();
+				pro = (Promociones)aPe.readObject();
+				i++;
+				System.out.println("<<<<<<<<<<<<<<<<<<"+i);
 			}
 		}
 		catch(Exception e) {			
-			System.out.println("fin listado Pelic N");
+			System.out.println("fin listadoN");
 			
 		}
 		finally{

@@ -144,7 +144,7 @@ public class Mostrar extends JFrame {
 						fila[3] = p[i].getDuracion();
 						fila[4] = p[i].getIdioma();
 						fila[5] = p[i].getFechaEstr();
-						fila[6] = p[i].getTipo();
+						fila[6] = tipo(p[i].getTipo());
 						fila[7] = p[i].getPrecio();
 						fila[8] = p[i].getNroCop();
 						((DefaultTableModel)table.getModel()).addRow(fila);
@@ -154,6 +154,20 @@ public class Mostrar extends JFrame {
 					
 				} 				
 				 
+			}
+
+			private String tipo(int tipo) {
+				
+				switch(tipo) {
+				case 1: return ("  Infantiles");
+				case 2: return ("  Navideños");
+				case 3: return ("  Accion");
+				case 4: return ("  Terror");
+				case 5: return ("  Terror");
+				case 6: return ("  Romance");
+				}
+				return null;
+				
 			}
 		});
 		btnTodo.setOpaque(false);
