@@ -40,6 +40,12 @@ public class Inicio extends JFrame {
 		p.setVisible(true);
 		this.setVisible(false);
 	}
+	private void diagrama() {
+		Diagrama d=new Diagrama();
+		d.setVisible(true);
+		this.setVisible(false);
+		
+	}
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -123,16 +129,29 @@ public class Inicio extends JFrame {
 		btnMostrar.setBounds(341, 83, 236, 119);
 		contentPane.add(btnMostrar);
 		
-		JButton btnVender = new JButton("Vender");
+		JButton btnVender = new JButton("Diagrama");
+		btnVender.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				diagrama();
+			}
+
+			
+		});
 		btnVender.setForeground(Color.WHITE);
 		btnVender.setFont(new Font("Sylfaen", Font.PLAIN, 20));
 		btnVender.setIcon(new ImageIcon(Inicio.class.getResource("/img/adiconar2.png")));
 		btnVender.setOpaque(false);
 		btnVender.setContentAreaFilled(false);
-		btnVender.setBounds(40, 228, 236, 119);
+		btnVender.setBounds(40, 228, 250, 119);
 		contentPane.add(btnVender);
 		
+		JLabel lblNombre = new JLabel("                           Desa\u00F1ado por Limber Alberto ");
+		lblNombre.setFont(new Font("Script MT Bold", Font.BOLD, 20));
+		lblNombre.setBounds(10, 354, 604, 25);
+		contentPane.add(lblNombre);
+		
 		JLabel lblFondo = new JLabel("");
+		lblFondo.setFont(new Font("Script MT Bold", Font.PLAIN, 11));
 		lblFondo.setIcon(new ImageIcon(Inicio.class.getResource("/img/fondo.jpg")));
 		lblFondo.setBounds(0, 0, 624, 379);
 		contentPane.add(lblFondo);

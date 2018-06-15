@@ -41,6 +41,12 @@ public class Mostrar extends JFrame {
 		i.setVisible(true);
 		this.dispose();
 	}
+	private void diagrama() {
+		Diagrama d=new Diagrama();
+		d.setVisible(true);
+		this.setVisible(false);
+		
+	}
 	private String tipo(int tipo) {
 		
 		switch(tipo) {
@@ -119,6 +125,7 @@ public class Mostrar extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnInicio = new JButton("  Inicio");
+		btnInicio.setFont(new Font("Sylfaen", Font.PLAIN, 15));
 		btnInicio.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -131,13 +138,22 @@ public class Mostrar extends JFrame {
 		btnInicio.setBounds(32, 421, 128, 50);
 		contentPane.add(btnInicio);
 		
-		JButton btnClientes = new JButton("  Clientes");
-		btnClientes.setOpaque(false);
-		btnClientes.setContentAreaFilled(false);
-		btnClientes.setBounds(198, 421, 128, 50);
-		contentPane.add(btnClientes);
+		JButton btnDiagrama = new JButton(" Diagrama");
+		btnDiagrama.setIcon(new ImageIcon(Mostrar.class.getResource("/img/mostrar.png")));
+		btnDiagrama.setFont(new Font("Sylfaen", Font.PLAIN, 15));
+		btnDiagrama.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				diagrama();
+			}
+		});
+		btnDiagrama.setOpaque(false);
+		btnDiagrama.setContentAreaFilled(false);
+		btnDiagrama.setBounds(198, 421, 144, 50);
+		contentPane.add(btnDiagrama);
 		
 		JButton btnTodo = new JButton("  Todo");
+		btnTodo.setFont(new Font("Sylfaen", Font.PLAIN, 15));
+		btnTodo.setIcon(new ImageIcon(Mostrar.class.getResource("/img/mostrar 1.png")));
 		btnTodo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblMostrar.setText("Todas Las Peliculas");
@@ -179,6 +195,8 @@ public class Mostrar extends JFrame {
 		contentPane.add(btnTodo);
 		
 		JButton btnPromociones = new JButton("  Promociones");
+		btnPromociones.setIcon(new ImageIcon(Mostrar.class.getResource("/img/mostrar.png")));
+		btnPromociones.setFont(new Font("Sylfaen", Font.PLAIN, 17));
 		btnPromociones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollPane.setVisible(true);
@@ -462,14 +480,21 @@ public class Mostrar extends JFrame {
 		});
 		btnPromociones.setOpaque(false);
 		btnPromociones.setContentAreaFilled(false);
-		btnPromociones.setBounds(510, 421, 128, 50);
+		btnPromociones.setBounds(510, 421, 154, 50);
 		contentPane.add(btnPromociones);
 		
-		JButton btnMasVendidos = new JButton("Mas vendidos");
-		btnMasVendidos.setOpaque(false);
-		btnMasVendidos.setContentAreaFilled(false);
-		btnMasVendidos.setBounds(352, 421, 128, 50);
-		contentPane.add(btnMasVendidos);
+		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.setFont(new Font("Sylfaen", Font.PLAIN, 15));
+		btnCerrar.setIcon(new ImageIcon(Mostrar.class.getResource("/img/cerrar.png")));
+		btnCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnCerrar.setOpaque(false);
+		btnCerrar.setContentAreaFilled(false);
+		btnCerrar.setBounds(352, 421, 128, 50);
+		contentPane.add(btnCerrar);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(Mostrar.class.getResource("/img/fondo.jpg")));

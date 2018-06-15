@@ -103,6 +103,7 @@ public class Formulario extends JFrame {
 		contentPane.add(lblPrecio);
 		
 		textNombre = new JTextField();
+		textNombre.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textNombre.setBackground(Color.BLACK);
 		textNombre.setForeground(Color.WHITE);
 		textNombre.setOpaque(false);
@@ -141,6 +142,7 @@ public class Formulario extends JFrame {
 		contentPane.add(lblNroDeCopias);
 		
 		textDuracion = new JTextField();
+		textDuracion.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textDuracion.setDisabledTextColor(Color.WHITE);
 		textDuracion.setForeground(Color.WHITE);
 		textDuracion.setOpaque(false);
@@ -149,6 +151,7 @@ public class Formulario extends JFrame {
 		contentPane.add(textDuracion);
 		
 		textIdioma = new JTextField();
+		textIdioma.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textIdioma.setForeground(Color.WHITE);
 		textIdioma.setOpaque(false);
 		textIdioma.setColumns(10);
@@ -156,6 +159,7 @@ public class Formulario extends JFrame {
 		contentPane.add(textIdioma);
 		
 		textPrecio = new JTextField();
+		textPrecio.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textPrecio.setForeground(Color.WHITE);
 		textPrecio.setOpaque(false);
 		textPrecio.setColumns(10);
@@ -163,6 +167,7 @@ public class Formulario extends JFrame {
 		contentPane.add(textPrecio);
 		
 		textFecha = new JTextField();
+		textFecha.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textFecha.setForeground(Color.WHITE);
 		textFecha.setOpaque(false);
 		textFecha.setColumns(10);
@@ -170,6 +175,7 @@ public class Formulario extends JFrame {
 		contentPane.add(textFecha);
 		
 		textNro = new JTextField();
+		textNro.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textNro.setForeground(Color.WHITE);
 		textNro.setOpaque(false);
 		textNro.setColumns(10);
@@ -177,6 +183,7 @@ public class Formulario extends JFrame {
 		contentPane.add(textNro);
 		
 		textCodigo = new JTextField();
+		textCodigo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		textCodigo.setOpaque(false);
 		textCodigo.setForeground(Color.WHITE);
 		textCodigo.setColumns(10);
@@ -350,7 +357,7 @@ public class Formulario extends JFrame {
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setForeground(Color.BLACK);
 		lblFondo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		lblFondo.setIcon(new ImageIcon(Formulario.class.getResource("/img/fondoReg.jpg")));
+		lblFondo.setIcon(new ImageIcon(Formulario.class.getResource("/img/fondo.jpg")));
 		lblFondo.setBounds(0, 0, 855, 417);
 		contentPane.add(lblFondo);
 	}
